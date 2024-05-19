@@ -25,6 +25,11 @@ namespace StepikCourseDownloader
 
             await Console.Out.WriteLineAsync($"\nСкачивание курса \"{courseTitle}\"...");
 
+            await Console.Out.WriteLineAsync($"Краткое содержимое курса");
+            File.WriteAllText($"{courseTitle}\\Краткое содержимое курса.html", course["summary"].ToString());
+            await Console.Out.WriteLineAsync($"Описание курса");
+            File.WriteAllText($"{courseTitle}\\Описание курса.html", course["description"].ToString());
+
             var sections = await fetch.FetchObjects("section", course["sections"]);
             var sectionNum = 1;
 
