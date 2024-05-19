@@ -48,9 +48,7 @@ namespace StepikCourseDownloader
                 {
                     var lessonNum = unit["lesson"];
                     var lesson = await fetch.FetchObject("lesson", lessonNum);
-
-                    var pattern = "\\\|/:*\"<>";
-                    var lessonTitle = lesson["title"].ToString().Replace("/", ", ").Replace("\"", "");
+                    var lessonTitle = Helpers.RemoveInvalidChars(lesson["title"].ToString());
 
                     var stepIds = lesson["steps"];
                     var steps = await fetch.FetchObjects("step", stepIds);
