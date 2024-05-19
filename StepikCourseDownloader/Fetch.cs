@@ -3,13 +3,13 @@ using System.Net.Http.Headers;
 
 namespace StepikCourseDownloader
 {
-    internal class Helpers
+    internal class Fetch
     {
         private string apiHost;
         private string token;
         private static HttpClient httpClient = new HttpClient();
 
-        public Helpers(string apiHost, string token)
+        public Fetch(string apiHost, string token)
         {
             this.apiHost = apiHost;
             this.token = token;

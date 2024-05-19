@@ -11,11 +11,11 @@ namespace StepikCourseDownloader
             var config = YamlSerializer.Read<Configuration>("config.yaml");
             var auth = new Authorization(authUrl, config.ClientId, config.ClientSecret);
             var token = await auth.GetToken();
-            var helpers = new Helpers(apiHost, token);
+            var fetch = new Fetch(apiHost, token);
 
             await Console.Out.WriteLineAsync("Введите идентификатор курса:");
             var courseId = Convert.ToInt32(Console.ReadLine());
-            var course = await helpers.FetchObject("course", courseId);
+            var course = await fetch.FetchObject("course", courseId);
             var courseTitle = course["title"].ToString();
 
             if (!Directory.Exists(courseTitle))
@@ -25,13 +25,13 @@ namespace StepikCourseDownloader
 
             await Console.Out.WriteLineAsync($"\nСкачивание курса \"{courseTitle}\"...");
 
-            var sections = await helpers.FetchObjects("section", course["sections"]);
+            var sections = await fetch.FetchObjects("section", course["sections"]);
             var sectionNum = 1;
 
             foreach (var section in sections)
             {
                 var unitIds = section["units"];
-                var units = await helpers.FetchObjects("unit", unitIds);
+                var units = await fetch.FetchObjects("unit", unitIds);
                 var sectionTitle = section["title"].ToString().Trim();
                 var unitNum = 1;
 
@@ -47,11 +47,13 @@ namespace StepikCourseDownloader
                 foreach (var unit in units)
                 {
                     var lessonNum = unit["lesson"];
-                    var lesson = await helpers.FetchObject("lesson", lessonNum);
+                    var lesson = await fetch.FetchObject("lesson", lessonNum);
+
+                    var pattern = "\\\|/:*\"<>";
                     var lessonTitle = lesson["title"].ToString().Replace("/", ", ").Replace("\"", "");
 
                     var stepIds = lesson["steps"];
-                    var steps = await helpers.FetchObjects("step", stepIds);
+                    var steps = await fetch.FetchObjects("step", stepIds);
                     var stepNum = 1;
 
                     await Console.Out.WriteLineAsync($"{sectionNum}.{unitNum} {lessonTitle}");
