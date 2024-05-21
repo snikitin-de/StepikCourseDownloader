@@ -87,6 +87,12 @@
 
                 sectionNum++;
             }
+
+            await Console.Out.WriteLineAsync($"\nОбъединение PDF файлов...");
+            string[] pdfFiles = Directory.GetFiles(".", "*.pdf", SearchOption.AllDirectories);
+            string outputFilePath = $"{courseTitle}.pdf";
+
+            PdfHelpers.MergePdfFiles(pdfFiles, outputFilePath);
         }
     }
 }
