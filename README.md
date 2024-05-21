@@ -1,6 +1,6 @@
 # 💻 StepikCourseDownloader
 
-💻 Программа для скачивания текстовых уроков со Stepik в формате `PDF`.
+💻 📝 Программа для скачивания текстовых уроков со Stepik в формате `PDF`.
 
 ![StepikCourseDownloader](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/c438dfb2-bdc9-4d76-908e-496b0c562f34)
 
