@@ -17,7 +17,7 @@
             await Console.Out.WriteLineAsync("Введите идентификатор курса:");
             var courseId = Convert.ToInt32(Console.ReadLine());
             var course = await fetch.FetchObject("course", courseId);
-            var courseTitle = course["title"].ToString();
+            var courseTitle = Helpers.RemoveInvalidChars(course["title"].ToString());
 
             if (!Directory.Exists(courseTitle))
             {
