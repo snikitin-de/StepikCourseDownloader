@@ -1,16 +1,16 @@
 # 💻 StepikCourseDownloader
 
-💻 Программа для скачивания текстовых уроков со Stepik в формате `HTML`.
+💻 Программа для скачивания текстовых уроков со Stepik в формате `PDF`.
 
-![StepikCourseDownloader](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/7de2f352-e731-43ff-a918-121e12ec683f)
+![StepikCourseDownloader](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/c438dfb2-bdc9-4d76-908e-496b0c562f34)
 
 ## 📄 Описание
 
 В программу вводится идентификатор курса со Stepik. Идентификатор курса находится в `URL` после слова "course":
 
-`https://stepik.org/course/87924/info`
+`https://stepik.org/course/120679/syllabus`
 
-Здесь идентификатор курса — *87924*.
+Здесь идентификатор курса — *120679*.
 
 По данному идентификатору скачиваются все текстовые уроки указанного курса в формате `HTML`.
 
@@ -29,13 +29,17 @@ ClientSecret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Пример структуры папок скачанного курса:
 
-![Пример структуры скачанного курса](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/fc62e3fe-3e8a-4c70-97ef-fff5aeae6afd)
+![Пример структуры скачанного курса](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/493f50ea-a549-4431-a5bc-9e63c13be5b5)
 
 ## 💻 Работа программы
 
 Пример работы программы:
 
 ![Пример работы программы](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/fab592c8-ea9c-4926-b0d6-454d5ad2d83d)
+
+Пример полученной PDF страницы из курса [Тестирование ПО: Postman для тестирования API](https://stepik.org/lesson/746806/step/3?unit=748617):
+
+![Пример полученной PDF страницы](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/52883beb-e6d3-4013-8702-164b843ab290)
 
 ## 🔧 Техническая часть
 
@@ -46,4 +50,5 @@ ClientSecret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Структура каталога решения:
 
-![Структура каталога решения](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/5c988ad3-728e-4e60-933b-909ec9495407)
+![Структура каталога решения](https://github.com/snikitin-de/StepikCourseDownloader/assets/25394427/f0cedba1-55fd-4042-b7f1-6e84b4fe78c3)
+
