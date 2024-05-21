@@ -1,0 +1,23 @@
+﻿body {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    padding: 20px 0px 10px 0px;
+}
+
+img {
+    margin: 16px;
+}
+
+pre code {
+    display: block;
+    padding: 1em;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: Consolas, ""Courier New"", Courier, monospace;
+    line-height: 1.5em;
+    white-space: pre-wrap;
+    word-break: break-all;
+}

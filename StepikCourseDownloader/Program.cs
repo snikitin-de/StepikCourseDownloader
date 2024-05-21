@@ -1,10 +1,11 @@
-﻿
-namespace StepikCourseDownloader
+﻿namespace StepikCourseDownloader
 {
     public class Program
     {
         static async Task Main()
         {
+            var htmlStyle = File.ReadAllText(@"styles\style.css");
+
             var apiHost = "https://stepik.org";
             var authUrl = apiHost + "/oauth2/token/";
 
@@ -26,9 +27,16 @@ namespace StepikCourseDownloader
             await Console.Out.WriteLineAsync($"\nСкачивание курса \"{courseTitle}\"...");
 
             await Console.Out.WriteLineAsync($"Краткое содержимое курса");
-            File.WriteAllText($"{courseTitle}\\Краткое содержимое курса.html", course["summary"].ToString());
+            var summary = course["summary"].ToString();
+            summary = HtmlHelpers.AddStyle(summary, htmlStyle);
+            var summaryPdf = PdfHelpers.ConvertHtmlToPdf(summary);
+            File.WriteAllBytes($"{courseTitle}\\Краткое содержимое курса.pdf", summaryPdf);
+
             await Console.Out.WriteLineAsync($"Описание курса");
-            File.WriteAllText($"{courseTitle}\\Описание курса.html", course["description"].ToString());
+            var description = course["description"].ToString();
+            description = HtmlHelpers.AddStyle(description, htmlStyle);
+            var descriptionPdf = PdfHelpers.ConvertHtmlToPdf(description);
+            File.WriteAllBytes($"{courseTitle}\\Описание курса.pdf", descriptionPdf);
 
             var sections = await fetch.FetchObjects("section", course["sections"]);
             var sectionNum = 1;
@@ -66,8 +74,9 @@ namespace StepikCourseDownloader
                         if (step["block"]["name"].ToString() == "text")
                         {
                             var lessonHTML = step["block"]["text"].ToString();
-
-                            File.WriteAllText($"{sectionDir}\\{sectionNum}.{unitNum}.{stepNum} {lessonTitle}.html", lessonHTML);
+                            lessonHTML = HtmlHelpers.AddStyle(lessonHTML, htmlStyle);
+                            var lessonPdf = PdfHelpers.ConvertHtmlToPdf(lessonHTML);
+                            File.WriteAllBytes($"{sectionDir}\\{sectionNum}.{unitNum}.{stepNum} {lessonTitle}.pdf", lessonPdf);
 
                             stepNum++;
                         }
