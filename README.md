@@ -16,7 +16,11 @@
 
 Помимо идентификатора курса необходимо создать приложение в Stepik и получить `clientId` и `clientSecret` для возможности работы со Stepik API.
 
-После получения авторизационных данных, необходимо рядом с исполняемым файлом программы расположить файл `config.yaml` со следующим содержимым:
+Приложение создаётся по адресу https://stepik.org/oauth2/applications/ со следующими параметрами:
+
+<img width="497" height="647" alt="image" src="https://github.com/user-attachments/assets/1a2e1a33-dc12-4491-8f91-e4e5c22168a1" />
+
+После получения авторизационных данных, необходимо рядом с исполняемым файлом программы (.exe) расположить файл `config.yaml` со следующим содержимым:
 
 ```yaml
 ClientId: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
